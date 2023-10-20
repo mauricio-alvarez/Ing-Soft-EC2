@@ -42,20 +42,20 @@ def getfromAPI(ciudad):
         print('Pais o ciudad no encontradas')
         print(e)
 
+def getfromCSV(ciudad1, ciudad2):
+    data = pd.read_csv('worldcities.csv')
+    # Cities
+    to_city = ciudad1
+    from_city = ciudad2
+    # find row of to_city and from_city
+    to_city_row = data[data['city'] == to_city]
+    from_city_row = data[data['city'] == from_city]
+    # find distance between to_city and from_city
 
-data = pd.read_csv('worldcities.csv')
-# Cities
-to_city = "Lima"
-from_city = "New York"
-# find row of to_city and from_city
-to_city_row = data[data['city'] == to_city]
-from_city_row = data[data['city'] == from_city]
-# find distance between to_city and from_city
+    lat1 = to_city_row["lat"].values[0]
+    lon1 = to_city_row["lng"].values[0]
+    lat2 = from_city_row["lat"].values[0]
+    lon2 = from_city_row["lng"].values[0]
 
-lat1 = to_city_row["lat"].values[0]
-lon1 = to_city_row["lng"].values[0]
-lat2 = from_city_row["lat"].values[0]
-lon2 = from_city_row["lng"].values[0]
-
-# find haversine distance between to_city and from_city
-print(haversine(lon1, lat1, lon2, lat2))
+    # find haversine distance between to_city and from_city
+    return haversine(lon1, lat1, lon2, lat2)
