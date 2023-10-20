@@ -30,18 +30,6 @@ def getfromAPI(ciudad, pais):
         print('Pais o ciudad no encontradas')
         print(e)
 
-def getfromAPI(ciudad):
-    api = f'https://nominatim.openstreetmap.org/search?q={ciudad}&format=json'
-    
-    try:
-        response = requests.get(api)
-        response.raise_for_status()
-        data = response.json()
-        return data[0]
-    except requests.exceptions.RequestException as e:
-        print('Pais o ciudad no encontradas')
-        print(e)
-
 def getfromCSV(ciudad1, ciudad2):
     data = pd.read_csv('worldcities.csv')
     # Cities
