@@ -11,5 +11,7 @@ def vars():
     cities = request.form['test']
     print(cities)
     return render_template('index.html', cities=cities)
+
+
 if __name__ == '__main__':
     app.run()
