@@ -1,7 +1,8 @@
 import pandas as pd
+import requests
 from math import radians, cos, sin, asin, sqrt
 
-def haversine(lon1, lat1, lon2, lat2):
+def haversine(lon1, lat1, lon2, lat2):#distancia máxima entre dos puntos
     """
     Calculate the great circle distance in kilometers between two points 
     on the earth (specified in decimal degrees)
@@ -11,7 +12,7 @@ def haversine(lon1, lat1, lon2, lat2):
 
     # haversine formula 
     dlon = lon2 - lon1 
-    dlat = lat2 - lat1 
+    dlat = lat2 - lat1
     a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
     c = 2 * asin(sqrt(a)) 
     r = 6371 # Radius of earth in kilometers. Use 3956 for miles. Determines return value units.
@@ -30,6 +31,7 @@ def getfromAPI(ciudad, pais):
         print('Pais o ciudad no encontradas')
         print(e)
 
+print(getfromAPI('lima','peru'))
 def getfromAPI(ciudad):
     api = f'https://nominatim.openstreetmap.org/search?q={ciudad}&format=json'
     
@@ -63,12 +65,13 @@ def getfromCSV(ciudad1, ciudad2):
 
 def Howto(ciudad1, pais1, ciudad2, pais2, value):
     match value:
-        case 1:
+        case 'Read CSV':
+            print('Read CSV')
             data = getfromCSV(ciudad1, ciudad2)
             return data
-        case 2:
+        case 'Use Api':
             data1 = getfromAPI(ciudad1, pais1)
             data2 = getfromAPI(ciudad2, pais2)
             return haversine(data1['lon'],data1['lat'],data2['lon'], data2['lat'])
-        case 3:
-            return
+        case 'Mock':
+            return 'opcion3'

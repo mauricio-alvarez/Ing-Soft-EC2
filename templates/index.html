@@ -1,5 +1,40 @@
-<form action="/get-text" method="POST">
-    <input type="text" name="test">
-    <input type="text" name="test1">
-    <input type="submit" value="Go">
-</form>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../static/style.css" />
+    <title>Botón con 3 opciones</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Formulario para procesar datos</h1>
+
+      <form action="/procesar" method="POST">
+        <label for="opciones">Elige una opción:</label>
+        <select id="opciones" name="opciones">
+          <option value="Read CSV">Read CSV</option>
+          <option value="Use Api">Use Api</option>
+          <option value="Mock">Mock</option>
+        </select>
+
+        <label for="ciudad1">Ciudad 1:</label>
+        <input type="text" id="ciudad1" name="ciudad1" />
+        <br />
+
+        <label for="pais1">País 1:</label>
+        <input type="text" id="pais1" name="pais1" />
+        <br />
+
+        <label for="ciudad2">Ciudad 2:</label>
+        <input type="text" id="ciudad2" name="ciudad2" />
+        <br />
+
+        <label for="pais2">País 2:</label>
+        <input type="text" id="pais2" name="pais2" />
+        <br />
+
+        <br />
+        <input type="submit" value="Elegir" />
+      </form>
+    </div>
+  </body>
+</html>
