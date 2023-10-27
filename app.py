@@ -15,7 +15,6 @@ def procesar():
     pais2 = request.form['pais2']
     opcion = request.form['opciones']
     distancia=Howto(ciudad1,pais1,ciudad2,pais2,opcion)
-    
     return render_template('distance.html',opcion=opcion,distancia=distancia)
 
 """@app.route('/get-text', methods=['GET', 'POST'])

@@ -30,8 +30,6 @@ def getfromAPI(ciudad, pais):
     except requests.exceptions.RequestException as e:
         print('Pais o ciudad no encontradas')
         print(e)
-
-print(getfromAPI('lima','peru'))
 def getfromAPI(ciudad):
     api = f'https://nominatim.openstreetmap.org/search?q={ciudad}&format=json'
     
@@ -65,13 +63,15 @@ def getfromCSV(ciudad1, ciudad2):
 
 def Howto(ciudad1, pais1, ciudad2, pais2, value):
     match value:
-        case 'Read CSV':
+        case "Read CSV":
             print('Read CSV')
             data = getfromCSV(ciudad1, ciudad2)
             return data
-        case 'Use Api':
+        case "Use Api":
             data1 = getfromAPI(ciudad1, pais1)
             data2 = getfromAPI(ciudad2, pais2)
             return haversine(data1['lon'],data1['lat'],data2['lon'], data2['lat'])
-        case 'Mock':
+        case "Mock":
             return 'opcion3'
+#print(getfromCSV('Lima','New York'))      
+#print(Howto('lima','lima','new york',"us",'Read CSV'))
